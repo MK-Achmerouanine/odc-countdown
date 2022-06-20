@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import Countdown from "react-countdown";
-import Config from "../components/Config";
+import React, { useEffect, useState } from "react";
 import { default as CountdownComponent } from "../components/Countdown";
+import Countdown from "react-countdown";
 
 const Controller = () => {
-  const [step, setStep] = useState(1);
-  const [config, setConfig] = useState(true);
+  const [count, setCount] = useState(null)
+  useEffect(() => {
+    let count = parseInt(localStorage.getItem("countdown"));
+    setCount(count)
+  }, [count])
+  
 
-  let count = parseInt(localStorage.getItem("countdown")) || 5;
   // Random component
-  const Completionist = () => <span>You are good to go!</span>;
+  const Completionist = () => <span>You are good to go! {count}</span>;
 
   // Renderer callback with condition
   const renderer = ({ hours, minutes, seconds, completed, api }) => {
@@ -32,20 +34,16 @@ const Controller = () => {
   };
   return (
     <>
-      {config ? (
-        <Config setConfig={setConfig}/>
-      ) : count > 0 ? (
+      { parseInt(localStorage.getItem("countdown")) ? (
         <Countdown
-          date={Date.now() + count}
+          date={Date.now() + count*1000}
           autoStart={false}
           renderer={renderer}
         >
           <Completionist />
         </Countdown>
-      ) : (
-        <Countdown date={Date.now() + 5} autoStart={false} renderer={renderer}>
-          <Completionist />
-        </Countdown>
+      ) :(
+        <h3>{parseInt(localStorage.getItem("countdown"))}</h3>
       )}
     </>
   );

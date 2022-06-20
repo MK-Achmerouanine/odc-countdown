@@ -2,13 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import Controller from "./pages/Controller";
-
-
+import Header from "./components/Header";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Config from "./components/Config";
+import Run from "./components/Run";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Controller/>
+
+    <BrowserRouter>
+    <Header/>
+    <Routes>
+      <Route path="/" element={<Config />} />
+        <Route path="/countdown" element={<Run />} />
+    </Routes>
+  </BrowserRouter>
   </React.StrictMode>
 );
 

@@ -1,5 +1,9 @@
 :root {
   --primary: rgb(255, 121, 0);
+  --red: #CD3C14;
+  --yellow: #FFCC00;
+  --blue:#527EDB;
+  --green:#32C832;
 }
 
 * {
@@ -9,10 +13,8 @@
   font-size: 1rem;
 }
 body {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: space-between;
 }
 
 #config {
@@ -52,9 +54,9 @@ body {
 button{
   padding: 1rem 1.5rem;
   margin: 1.3rem;
-  background-color: azure;
+  background-color: black;
   border: 1px solid var(--primary);
-  color: black;
+  color: var(--primary);
 }
 button:hover{
   background-color: var(--primary);
@@ -70,4 +72,54 @@ justify-content: space-around;
 .box{
   padding: 2rem;
   border: 1px solid var(--primary);
+  margin: 2rem;
+  margin-bottom: 0 !important;
+}
+.btn-action{
+  padding: 2rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: whitesmoke;
+  font-size: 18px !important;
+  font-weight: bolder;
+}
+.btn-action.play{
+background-color: var(--green);
+border-color: var(--green);
+}
+.btn-action.play:hover{
+background-color: black;
+color: var(--green);
+border-color: var(--green);
+}
+.btn-action.pause{
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+}
+.btn-action.pause:hover{
+background-color: black;
+color: var(--yellow);
+border-color: var(--yellow);
+}
+.btn-action.stop{
+  background-color: var(--red);
+  border-color: var(--red);
+}
+.btn-action.stop:hover{
+background-color: black;
+color: var(--red);
+border-color: var(--red);
+}
+
+.countdown{
+  padding: 5rem;
+  font-size: 5rem;
+  background-color: black;
+  color: var(--primary);
+}
+.info{
+  font-size: 2rem;
+  background-color: var(--primary);
+  color: white;
+  margin: 1rem;
 }
